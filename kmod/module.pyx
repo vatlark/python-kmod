@@ -136,7 +136,7 @@ cdef class Module (object):
             _libkmod_h.const_char_ptr)
         print_action = NULL
         if extra_options:
-            opt = extra_options
+            opt = str.encode(extra_options)
         # TODO: convert callbacks and data from Python object to C types
         err = _libkmod_h.kmod_module_probe_insert_module(
             self.module, flags, opt, install, d, print_action)
