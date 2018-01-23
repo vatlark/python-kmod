@@ -23,9 +23,10 @@ import platform
 # setuptools DWIM monkey-patch madness
 # http://mail.python.org/pipermail/distutils-sig/2007-September/thread.html#8204
 import sys
-if 'setuptools.extension' in sys.modules:
-    m = sys.modules['setuptools.extension']
-    m.Extension.__dict__ = m._Extension.__dict__
+if sys.version_info < (3,0):
+    if 'setuptools.extension' in sys.modules:
+        m = sys.modules['setuptools.extension']
+        m.Extension.__dict__ = m._Extension.__dict__
 
 package_name = 'kmod'
 
