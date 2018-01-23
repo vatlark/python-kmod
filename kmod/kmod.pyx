@@ -46,7 +46,7 @@ cdef class Kmod (object):
         cdef char *mod_dir = NULL
         self._cleanup()
         if self.mod_dir:
-            mod_dir = self.mod_dir
+            mod_dir = str.encode(self.mod_dir)
         self._kmod_ctx = _libkmod_h.kmod_new(mod_dir, NULL);
         if self._kmod_ctx is NULL:
             raise _KmodError('Could not initialize')
